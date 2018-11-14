@@ -61,7 +61,7 @@ export default {
     console.log(document.getElementById('app').clientWidth) // Output '942' (It depends on the environment)
   },
 
-  // Reactive data was updated and DOM has not been structured yet.
+  // Reactive data was updated and DOM has not been updated yet.
   // If $destroy() was called, this hook(and updated hook) will not be executed
   beforeUpdate () {
     console.log('beforeUpdate')
@@ -71,7 +71,7 @@ export default {
     console.log(document.getElementById('app').clientWidth)
   },
 
-  // Reactive data was updated and DOM was structured.
+  // Reactive data was updated and DOM was updated.
   updated () {
     console.log('updated')
 
