@@ -3,6 +3,7 @@
     <img src="./assets/logo.png">
     <br>
     <button @click="extendWidth">extend</button>
+    <button @click="destroyInstance">destroy</button>
     <app-child/>
   </div>
 </template>
@@ -29,6 +30,10 @@ export default {
   methods: {
     extendWidth () {
       this.appStyle.width = parseInt(this.appStyle.width) + 10 + '%'
+    },
+
+    destroyInstance () {
+      this.$destroy()
     }
   },
 
@@ -56,19 +61,37 @@ export default {
     console.log(document.getElementById('app').clientWidth) // Output '942' (It depends on the environment)
   },
 
+  // Reactive data was updated and DOM has not been structured yet.
+  // If $destroy() was called, this hook(and updated hook) will not be executed
   beforeUpdate () {
     console.log('beforeUpdate')
+
     // Output '942' (It depends on the environment) if button was clicked once.
     // Output '1021' (It depends on the environment) if button was clicked twice.
     console.log(document.getElementById('app').clientWidth)
   },
 
+  // Reactive data was updated and DOM was structured.
   updated () {
     console.log('updated')
+
     // Output '1021' (It depends on the environment) if button was clicked once.
     // Output '1099' (It depends on the environment) if button was clicked twice.
     console.log(document.getElementById('app').clientWidth)
+  },
+
+  // $destroy() was called and vue instance has been dropped yet.
+  beforeDestroy () {
+    console.log('beforeDestroy')
+    console.log(this.name) // Output 'hatsukaze hitomi'
+  },
+
+  // $destroy() was called and vue instance has been dropped yet.
+  destroyed () {
+    console.log('destroyed')
+    console.log(this.name) // Output 'hatsukaze hitomi' (Data is left.)
   }
+
 }
 </script>
 
