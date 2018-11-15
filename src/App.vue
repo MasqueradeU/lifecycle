@@ -52,13 +52,15 @@ export default {
   // DOM has not been structured yet. This section is just before it.
   beforeMount () {
     console.log('beforeMount')
-    console.log(document.getElementById('app').clientWidth) // Output '785' (It depends on the environment)
+
+    // Output error because dom has not been structed
+    // console.log(this.$el.clientWidth)
   },
 
   // DOM was structured.
   mounted () {
     console.log('mounted')
-    console.log(document.getElementById('app').clientWidth) // Output '942' (It depends on the environment)
+    console.log(this.$el.clientWidth) // Output '942' (It depends on the environment)
   },
 
   // Reactive data was updated and DOM has not been updated yet.
@@ -68,7 +70,7 @@ export default {
 
     // Output '942' (It depends on the environment) if button was clicked once.
     // Output '1021' (It depends on the environment) if button was clicked twice.
-    console.log(document.getElementById('app').clientWidth)
+    console.log(this.$el.clientWidth)
   },
 
   // Reactive data was updated and DOM was updated.
@@ -77,7 +79,7 @@ export default {
 
     // Output '1021' (It depends on the environment) if button was clicked once.
     // Output '1099' (It depends on the environment) if button was clicked twice.
-    console.log(document.getElementById('app').clientWidth)
+    console.log(this.$el.clientWidth)
   },
 
   // $destroy() was called and vue instance has been dropped yet.
