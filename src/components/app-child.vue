@@ -7,12 +7,15 @@
 </template>
 
 <script>
-
 export default {
   name: 'app-child',
+
+  props: {
+    name: String
+  },
+
   data () {
     return {
-      name: 'hitomi hatsukaze',
       childStyle: {
         width: '150%',
         height: '150%'
@@ -33,7 +36,9 @@ export default {
   // Reactive data has not been initialized yet. This section is just before it.
   beforeCreate () {
     console.log('beforeCreate-child')
-    console.log(this.name) // Output 'undefined'
+
+    // Output error
+    // console.log(this.name)
   },
 
   // Reactive data was initialized.

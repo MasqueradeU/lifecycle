@@ -4,7 +4,7 @@
     <br>
     <button @click="extendWidth">extend</button>
     <button @click="destroyInstance">destroy</button>
-    <app-child/>
+    <app-child :name="name"/>
   </div>
 </template>
 
