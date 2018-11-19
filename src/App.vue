@@ -36,6 +36,9 @@ export default {
   methods: {
     extendWidth () {
       this.appStyle.width = parseInt(this.appStyle.width) + 10 + '%'
+      this.$nextTick(() => {
+        console.log(this.$el.clientWidth)
+      })
     },
 
     destroyInstance () {
