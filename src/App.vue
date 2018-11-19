@@ -27,6 +27,12 @@ export default {
     }
   },
 
+  watch: {
+    'appStyle.width' () {
+      console.log(this.$el.clientWidth)
+    }
+  },
+
   methods: {
     extendWidth () {
       this.appStyle.width = parseInt(this.appStyle.width) + 10 + '%'
